@@ -14,7 +14,7 @@ namespace Domain_Layer.Users.Repository
         void Add(User user);
 
         void Update(User user);
-        User GetById(Guid id);
+        User GetUserById(Guid id);
         List<User> GetUsers();
         void SaveEveryThings();
     }

@@ -46,20 +46,26 @@ namespace Application_Layer.Products
             }
         }
 
-        public List<ProductDTO> GetAll()
+       
+      
+
+        public List<ProductDTO> GetAllProduct()
         {
             //map from domain model type to DTOs
 
-            return repository.GetProducts().Select(p => new ProductDTO() { 
-                pId=p.pId,
-                 Tittle=p.Tittle,
-                    Price=p.Price,
-                        Count=p.Count
+            return repository.GetProducts().Select(p => new ProductDTO()
+            {
+                pId = p.pId,
+                Tittle = p.Tittle,
+                Price = p.Price,
+                Count = p.Count
 
             }).ToList();
         }
 
-        public ProductDTO GetById(Guid id)
+      
+
+        public ProductDTO GetProductById(Guid id)
         {
             //map from domain model type to DTOs
 
