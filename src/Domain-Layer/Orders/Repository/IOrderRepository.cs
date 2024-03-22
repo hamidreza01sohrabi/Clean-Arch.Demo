@@ -13,8 +13,8 @@ namespace Domain_Layer.Orders.Repository
       
         void Add(Order order);
         void Update(Order order);
-        Order GetById(Guid id);
-        List<Order> GetUsers();
+        Order GetOrderById(Guid id);
+        List<Order> GetOrders();
         void SaveEveryThings();
     }
 }

@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Contract-Layer\Contract-Layer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Orders\DTOS\" />
-  </ItemGroup>
-
 </Project>
