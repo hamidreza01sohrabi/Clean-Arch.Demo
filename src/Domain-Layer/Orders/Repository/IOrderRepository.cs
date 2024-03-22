@@ -11,10 +11,30 @@ namespace Domain_Layer.Orders.Repository
     {
         // متد های ریپازیتوری در لایه های  بالاتر پیاده سازی میشود و عملیات های ذیل رو پایگاه داده برای شی اوردر یا سفارش انجام میشود بدون حذف اطلاعات از بانک
       
+        //برای ساخت یک شی جدید
         void Add(Order order);
+
+
+
+        //برای بروزرسانی اطلاعات اشیا ثبت شده
         void Update(Order order);
+
+
+        
+
+        //برای گرفتن اشیا ثبت شده
         Order GetOrderById(Guid id);
         List<Order> GetOrders();
+
+
+
+        
+        //برای ثبت و اتمام عملیات ها
         void SaveEveryThings();
+
+
+
+        //گرفتن استعلام شی از بانک
+        bool NotExist(Guid guid);
     }
 }
