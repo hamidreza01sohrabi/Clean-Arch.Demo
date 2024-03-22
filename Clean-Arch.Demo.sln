@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8ABF0796-4E0E-42CE-A92B-AE401A66E1D7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0045AF55-D6C8-4FE2-9C78-36F4BD482A23}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain-Layer", "src\Domain-Layer\Domain-Layer.csproj", "{3DCA6DE2-E8D8-46CC-9FC3-0B7AA6E7D886}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contract-Layer", "src\Contract-Layer\Contract-Layer.csproj", "{3D8AD895-9373-4677-9FCA-961EAD938383}"
@@ -19,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "End_Points", "End_Points", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateYourOrders_consol", "src\End_Points\CreateYourOrders_consol\CreateYourOrders_consol.csproj", "{805CABE7-D1A5-4FBF-86F4-6E99FC269459}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure-Layer", "src\Infrastructure-Layer\Infrastructure-Layer.csproj", "{D700A398-4F5F-4555-A87F-BB1AB965D2C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure-Layer", "src\Infrastructure-Layer\Infrastructure-Layer.csproj", "{D700A398-4F5F-4555-A87F-BB1AB965D2C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2E54CD64-9563-4EBD-A507-FCC249851494}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
