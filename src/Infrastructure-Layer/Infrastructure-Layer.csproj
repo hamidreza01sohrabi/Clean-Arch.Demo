@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Prsistent.efCore\" />
-    <Folder Include="Prsistent.Memory\Orders\" />
   </ItemGroup>
 
 </Project>
