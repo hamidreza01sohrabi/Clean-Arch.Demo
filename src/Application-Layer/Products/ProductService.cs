@@ -22,11 +22,11 @@ namespace Application_Layer.Products
             repository.SaveEveryThings();
         }
 
-        public void DeleteProduct(Guid id)
+        public void DeleteProduct(DeleteProductDTO delete)
         {
-            var oldP = repository.GetProductById(id);
+            var oldP = repository.GetProductById(delete.id);
             if (oldP != null) { 
-                    repository.Delete(id);
+                    repository.Delete(oldP);
                     repository.SaveEveryThings();
             }
 

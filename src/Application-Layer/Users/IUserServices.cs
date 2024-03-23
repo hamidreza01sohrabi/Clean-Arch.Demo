@@ -14,7 +14,7 @@ namespace Application_Layer.Users
         // useCase For User Entity
         void CreateNewUser(AddUserDTO command);
         void EditUser(EditeUserDTO command);
-        void DeleteUser(Guid guid);
+        void DeleteUser(DeleteUserDTO guid);
         UserDTO GetUserById(Guid guid);
         List<UserDTO> GetAllUser();
     }

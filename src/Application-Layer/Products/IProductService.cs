@@ -13,7 +13,7 @@ namespace Application_Layer.Products
         // useCase For Product Entity
         void CreateNewProduct(AddProductDTO Command);
         void EditProduct(EditeProductDTO editeDTO);
-        void DeleteProduct(Guid id);
+        void DeleteProduct(DeleteProductDTO deleteDTO);
         ProductDTO GetProductById(Guid id);
         List<ProductDTO> GetAllProduct();
     }

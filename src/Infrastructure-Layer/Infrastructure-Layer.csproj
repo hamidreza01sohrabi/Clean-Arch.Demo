@@ -11,4 +11,9 @@
     <ProjectReference Include="..\Application-Layer\Application-Layer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Prsistent.efCore\" />
+    <Folder Include="Prsistent.Memory\Orders\" />
+  </ItemGroup>
+
 </Project>

@@ -19,9 +19,9 @@ namespace Application_Layer.Users
             repository.SaveEveryThings();
         }
 
-        public void DeleteUser(Guid guid)
+        public void DeleteUser(DeleteUserDTO guid)
         {
-            var oldUser = repository.GetUserById(guid);
+            var oldUser = repository.GetUserById(guid.uId);
             oldUser.userDLT();
             repository.Update(oldUser);
             repository.SaveEveryThings();
