@@ -11,7 +11,7 @@ namespace Infrastructure_Layer.Prsistent.Memory
 {
     public class dbContext
     {
-        public List<Product> products { get; set; }
+        public List<Product> products { get; set; } = new List<Product>() { new Product("tittleFirst", 5000, 12) , new Product("tittleSecond", 12000 , 22)};
         public List<User> users { get; set; }
         public List<Order>  orders { get; set; }
 

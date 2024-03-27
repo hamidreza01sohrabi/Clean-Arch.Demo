@@ -33,6 +33,7 @@ namespace Config_Layer
 
             services.AddScoped<ISMS,SMS>();
 
+            //carete one instanciation of dbContext class for this Project
             services.AddSingleton<dbContext>();
         }
     }

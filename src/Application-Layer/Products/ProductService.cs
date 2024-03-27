@@ -20,14 +20,19 @@ namespace Application_Layer.Products
             var product = new Product(Command.Tittle, Command.Price, Command.Count);
             repository.Add(product);    
             repository.SaveEveryThings();
+
+          
         }
 
         public void DeleteProduct(DeleteProductDTO delete)
         {
             var oldP = repository.GetProductById(delete.id);
-            if (oldP != null) { 
-                    repository.Delete(oldP);
-                    repository.SaveEveryThings();
+            if (oldP != null)
+            {
+                repository.Delete(oldP);
+                repository.SaveEveryThings();
+
+                
             }
 
         }
@@ -43,11 +48,10 @@ namespace Application_Layer.Products
                 //then update information aboute that object in database and save
                 repository.Update(product);
                 repository.SaveEveryThings();
+
+               
             }
         }
-
-       
-      
 
         public List<ProductDTO> GetAllProduct()
         {
@@ -63,10 +67,9 @@ namespace Application_Layer.Products
             }).ToList();
         }
 
-      
-
         public ProductDTO GetProductById(Guid id)
         {
+
             //map from domain model type to DTOs
 
             var p = repository.GetProductById(id);
@@ -79,4 +82,6 @@ namespace Application_Layer.Products
             };
         }
     }
+
+    
 }
