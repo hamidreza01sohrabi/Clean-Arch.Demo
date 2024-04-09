@@ -15,7 +15,7 @@ namespace Application_Layer.Users
 
         public void CreateNewUser(AddUserDTO command)
         {
-            var user = new User(command.UserName, command.Email, new PhoneBook(new PhoneNumber(command.MobileNumber),new PhoneNumber(command.FaxNumber)));
+            var user = new Domain_Layer.User(command.UserName, command.Email, new PhoneBook(new PhoneNumber(command.MobileNumber),new PhoneNumber(command.FaxNumber)));
             repository.Add(user);
             repository.SaveEveryThings();
         }

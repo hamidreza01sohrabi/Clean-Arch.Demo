@@ -1,6 +1,7 @@
 ﻿using Application_Layer.Orders.DTOS;
 using Domain_Layer.Orders;
 using Domain_Layer.Orders.Repository;
+using Domain_Layer.Shared;
 
 namespace Application_Layer.Orders
 {
@@ -15,7 +16,7 @@ namespace Application_Layer.Orders
 
         public void CreateNewOrder(AddOrderDTO command)
         {
-            var newOrder = new Order(command.ProductId, command.Price, command.Count);
+            var newOrder = new Order(command.ProductId, Money.FromTooman(command.Price), command.Count);
             repository.Add(newOrder);
             repository.SaveEveryThings();
         }
@@ -32,12 +33,12 @@ namespace Application_Layer.Orders
         public OrderDTO GetOrder(Guid id)
         {
            var or= repository.GetOrderById(id);
-            return new OrderDTO(or.oId, or.ProductId, or.Price, or.Count, or.Finally, or.FinallyDate);    
+            return new OrderDTO(or.oId, or.ProductId, or.Price.RialValue, or.Count, or.Finally, or.FinallyDate);    
         }
 
         public List<OrderDTO> GetOrders()
         {
-            return repository.GetOrders().Select(or => new OrderDTO(or.oId, or.ProductId, or.Price, or.Count, or.Finally, or.FinallyDate)).ToList();
+            return repository.GetOrders().Select(or => new OrderDTO(or.oId, or.ProductId, or.Price.RialValue, or.Count, or.Finally, or.FinallyDate)).ToList();
         }
     }
 }
