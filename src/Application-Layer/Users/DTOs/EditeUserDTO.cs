@@ -2,19 +2,21 @@
 {
     public class EditeUserDTO
     {
-        public EditeUserDTO() { }
-        //public EditeUserDTO(Guid uId, string userName, string email, string phoneNumber)
-        //{
-        //    this.uId = uId;
-        //    UserName = userName;
-        //    Email = email;
-        //    PhoneNumber = phoneNumber;
-        //}
+        public EditeUserDTO(Guid uId, string userName, string email, string mobileNumber, string faxNumber)
+        {
+            this.uId = uId;
+            UserName = userName;
+            Email = email;
+            MobileNumber = mobileNumber;
+            FaxNumber = faxNumber;
+        }
+
 
         public Guid uId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string MobileNumber { get; set; }
+        public string FaxNumber { get; set; }
 
     }
 }

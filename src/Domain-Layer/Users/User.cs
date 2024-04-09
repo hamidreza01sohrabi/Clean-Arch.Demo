@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain_Layer.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,20 @@ namespace Domain_Layer.Users
 {
     public class User
     {
-        public User(string userName, string email, string phoneNumber)
+        public User(string userName, string email, PhoneBook phoneBook)
         {
-            Guard(userName, email, phoneNumber);
+            Guard(userName, email);
             uId =Guid.NewGuid();
             UserName = userName;
             Email = email;
-            PhoneNumber = phoneNumber;
+            PhoneBook = phoneBook;
             DeleteStatus = false;
         }
 
         public Guid uId{ get;private set; }
         public string  UserName{ get;private set; }
         public string  Email{ get;private set; }
-        public string  PhoneNumber{ get;private set; }
+        public PhoneBook PhoneBook { get;private set; }
         public bool DeleteStatus{ get;private set; }
         public DateTime DeleteDate{ get;private set; }
 
@@ -33,15 +34,15 @@ namespace Domain_Layer.Users
         }
 
 
-        public void Edite(string userName, string email, string phoneNumber) {
+        public void Edite(string userName, string email, PhoneBook phoneBook) {
             UserName = userName;
             Email = email;
-            PhoneNumber = phoneNumber;
+            PhoneBook = phoneBook;
         }
 
-        private void Guard(string userName, string email, string phoneNumber) {
+        private void Guard(string userName, string email) {
 
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phoneNumber)) {
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(email)) {
                 throw new Exception("arguments are invalid");
             }
         }

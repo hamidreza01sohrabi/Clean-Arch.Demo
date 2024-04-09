@@ -1,6 +1,7 @@
 ﻿using Application_Layer.Products.DTOs;
 using Domain_Layer.Products;
 using Domain_Layer.Products.Repository;
+using Domain_Layer.Shared;
 using System.Data;
 using System.Net.Http.Headers;
 
@@ -17,7 +18,7 @@ namespace Application_Layer.Products
         public void CreateNewProduct(AddProductDTO Command)
         {
             //process of creating a new product
-            var product = new Product(Command.Tittle, Command.Price, Command.Count);
+            var product = new Product(Command.Tittle, Money.FromTooman(Command.Price), Command.Count);
             repository.Add(product);    
             repository.SaveEveryThings();
 
@@ -43,7 +44,7 @@ namespace Application_Layer.Products
             if (product != null)
             {
                 //first change values by the entity  itself
-               product.Edite(editeDTO.Tittle,editeDTO.Price,editeDTO.Count);
+               product.Edite(editeDTO.Tittle,Money.FromTooman(editeDTO.Price),editeDTO.Count);
                 
                 //then update information aboute that object in database and save
                 repository.Update(product);
@@ -61,7 +62,7 @@ namespace Application_Layer.Products
             {
                 pId = p.pId,
                 Tittle = p.Tittle,
-                Price = p.Price,
+                Price = p.Price.RialValue,
                 Count = p.Count
 
             }).ToList();
@@ -77,7 +78,7 @@ namespace Application_Layer.Products
             {
                 pId = p.pId,
                 Tittle = p.Tittle,
-                Price = p.Price,
+                Price = p.Price.RialValue,
                 Count = p.Count
             };
         }
