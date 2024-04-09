@@ -36,12 +36,13 @@ namespace Domain_Layer.Orders
         //    return item.TottalPrice;
         //}
 
-        //public void PluseCountOfItem(long itemId) { 
-        //    var item =Items.FirstOrDefault(x=>x.Id == itemId);   
+        //public void PluseCountOfItem(long itemId)
+        //{
+        //    var item = Items.FirstOrDefault(x => x.Id == itemId);
         //    if (item != null)
         //        throw new Exception("item not found");
 
-
+           
         //    item.IncreaseCount();
         //}
         //public void MinusCountOfItem(long itemId)
@@ -63,9 +64,9 @@ namespace Domain_Layer.Orders
             TottalItems += count;
         }
 
-        public void RemoveOrderItem(long id)
+        public void RemoveOrderItem(Guid id)
         {
-            var item = Items.FirstOrDefault(z=>z.Id == id);
+            var item = Items.FirstOrDefault(z=>z.ProductId  == id);
             if (item == null)
                 throw new Exception("order item was not found");
 

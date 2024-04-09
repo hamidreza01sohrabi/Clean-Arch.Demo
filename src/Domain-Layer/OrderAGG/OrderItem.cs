@@ -19,7 +19,6 @@ namespace Domain_Layer.OrderAGG
 
         public long Id { get;private set; }
         public Guid oId { get;private set; }
-
         public Guid ProductId { get; private set; }
         public int Count { get; private set; }
         public Money Price { get; private set; }

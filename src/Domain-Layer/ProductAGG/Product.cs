@@ -41,6 +41,7 @@ namespace Domain_Layer.Products
             var img=images.FirstOrDefault(i=>i.Id == id);
             if (img == null)
                 throw new Exception("image not found");
+
             images.Remove(img); 
         }
 
