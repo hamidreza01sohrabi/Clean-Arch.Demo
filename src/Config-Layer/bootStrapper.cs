@@ -1,7 +1,9 @@
 ﻿using Application_Layer.Orders;
+using Application_Layer.Orders.DomainService;
 using Application_Layer.Products;
 using Application_Layer.Users;
 using Contract_Layer;
+using Domain_Layer.OrderAGG.Services;
 using Domain_Layer.Orders.Repository;
 using Domain_Layer.Products.Repository;
 using Domain_Layer.Users.Repository;
@@ -30,6 +32,7 @@ namespace Config_Layer
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IUserServices, UserServices>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IOrderDomainService, OrderDomainService>();
 
             services.AddScoped<ISMS,SMS>();
 

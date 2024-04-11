@@ -1,5 +1,6 @@
 ﻿using Domain_Layer.ProductAGG;
-using Domain_Layer.Shared;
+using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Value_Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,17 @@ using System.Threading.Tasks;
 
 namespace Domain_Layer.Products
 {
-    public class Product
+    public class Product : AggregateRoot
     {
         public Product(string tittle, Money price, int count)
         {
             Guard(tittle, count);
-            pId =Guid.NewGuid();
             Tittle = tittle;
             Price = price;
             Count = count;
             images = new List<ProductImage>();
         }
 
-        public Guid pId { get;private set; }
         public string Tittle { get; private set; }
         public Money Price { get; private set; }
         public int Count { get; private set; }
@@ -33,7 +32,7 @@ namespace Domain_Layer.Products
 
         public void AddImage(string ImgName) {
            
-            images.Add(new ProductImage(ImgName, pId));
+            images.Add(new ProductImage(ImgName, Id));
             TottalImage += images.Count;
         }
         public void RemoveImage(long id) { 

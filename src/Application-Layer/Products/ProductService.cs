@@ -1,7 +1,7 @@
 ﻿using Application_Layer.Products.DTOs;
 using Domain_Layer.Products;
 using Domain_Layer.Products.Repository;
-using Domain_Layer.Shared;
+using Domain_Layer.Shared.Value_Objects;
 using System.Data;
 using System.Net.Http.Headers;
 

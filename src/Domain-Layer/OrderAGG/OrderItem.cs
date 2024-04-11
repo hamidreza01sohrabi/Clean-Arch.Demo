@@ -1,4 +1,5 @@
-﻿using Domain_Layer.Shared;
+﻿using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Value_Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Domain_Layer.OrderAGG
 {
-    public class OrderItem
+    public class OrderItem : BaseEntity
     {
-        public OrderItem(Guid oId, Guid productId, int count, Money price)
+        public OrderItem(long oId, long productId, int count, Money price)
         {
             this.oId = oId;
             ProductId = productId;
@@ -17,9 +18,8 @@ namespace Domain_Layer.OrderAGG
             Price = price;
         }
 
-        public long Id { get;private set; }
-        public Guid oId { get;private set; }
-        public Guid ProductId { get; private set; }
+        public long oId { get;private set; }
+        public long ProductId { get; private set; }
         public int Count { get; private set; }
         public Money Price { get; private set; }
 

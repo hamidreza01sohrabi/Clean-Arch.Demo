@@ -8,6 +8,6 @@ namespace Domain_Layer.OrderAGG.Services
 {
     public interface IOrderDomainService
     {
-        bool ProductNotExsite(Guid ProductId);
+        bool ProductNotExsite(long ProductId);
     }
 }

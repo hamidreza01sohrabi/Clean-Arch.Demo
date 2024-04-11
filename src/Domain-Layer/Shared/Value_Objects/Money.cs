@@ -1,9 +1,10 @@
 ﻿using Domain_Layer.Shared.Base_Value_Object;
 using System.Numerics;
 
-namespace Domain_Layer.Shared
+namespace Domain_Layer.Shared.Value_Objects
 {
-    public class Money : BaseValueObject {
+    public class Money : BaseValueObject
+    {
         public Money(double rialvalue)
         {
             Guard(rialvalue);
@@ -11,7 +12,8 @@ namespace Domain_Layer.Shared
         }
         public double RialValue { get; init; }
 
-        public static Money FromTooman(double Tomn) { 
+        public static Money FromTooman(double Tomn)
+        {
             return new Money(Tomn * 10);
         }
 
@@ -20,7 +22,8 @@ namespace Domain_Layer.Shared
         //    return new Money(Tomn);
         //}
 
-        public static Money operator +(Money m1, Money m2) {
+        public static Money operator +(Money m1, Money m2)
+        {
 
             return new Money(m1.RialValue + m2.RialValue);
         }
@@ -31,7 +34,8 @@ namespace Domain_Layer.Shared
             return new Money(m1.RialValue - m2.RialValue);
         }
 
-        private void Guard(double value) { 
+        private void Guard(double value)
+        {
             if (value <= 0)
             {
                 throw new Exception("Price cant be negative Number or zero");

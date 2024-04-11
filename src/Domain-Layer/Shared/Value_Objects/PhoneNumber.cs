@@ -6,9 +6,9 @@ using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain_Layer.Shared
+namespace Domain_Layer.Shared.Value_Objects
 {
-    public  class PhoneNumber: BaseValueObject
+    public class PhoneNumber : BaseValueObject
     {
         public PhoneNumber(string tell)
         {
@@ -21,9 +21,11 @@ namespace Domain_Layer.Shared
 
 
 
-        private void Guard(string tell) {
+        private void Guard(string tell)
+        {
 
-            if (string.IsNullOrEmpty(tell) || string.IsNullOrWhiteSpace(tell)) {
+            if (string.IsNullOrEmpty(tell) || string.IsNullOrWhiteSpace(tell))
+            {
                 throw new Exception("Value is not found");
             }
             if (tell.Trim().Length == 11)
@@ -35,7 +37,8 @@ namespace Domain_Layer.Shared
         //{
         //    return new PhoneNumber(tell);
         //}
-        public static PhoneNumber addNumberIR(string tell) {
+        public static PhoneNumber addNumberIR(string tell)
+        {
 
             var finallWord = tell.Remove(0, 1);
 

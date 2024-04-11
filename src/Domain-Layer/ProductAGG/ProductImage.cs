@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain_Layer.Shared.Base_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,25 +7,24 @@ using System.Threading.Tasks;
 
 namespace Domain_Layer.ProductAGG
 {
-    public class ProductImage
+    public class ProductImage : BaseEntity
     {
-        public ProductImage(string imageName, Guid pid)
+        public ProductImage(string imageName, long pid)
         {
             ImageName = imageName;
             pId = pid;
         }
 
-        public long Id { get; set; }
         public string ImageName{ get; set; }
-        public Guid pId { get; set; }
+        public long pId { get; set; }
 
-        private void Guard(string imgName, Guid pid) {
+        private void Guard(string imgName, long pid) {
 
             if (string.IsNullOrEmpty(imgName))
             {
                 throw new Exception("image name cant be null");
             }
-            if (pid == Guid.Empty)
+            if (pid == null)
             {
                 throw new Exception("productId is invalid");
             }

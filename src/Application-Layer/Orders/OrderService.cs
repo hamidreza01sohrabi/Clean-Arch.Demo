@@ -1,7 +1,7 @@
 ﻿using Application_Layer.Orders.DTOS;
 using Domain_Layer.Orders;
 using Domain_Layer.Orders.Repository;
-using Domain_Layer.Shared;
+using Domain_Layer.Shared.Value_Objects;
 
 namespace Application_Layer.Orders
 {

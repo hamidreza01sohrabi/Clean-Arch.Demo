@@ -1,6 +1,8 @@
 ﻿using Domain_Layer.OrderAGG;
+using Domain_Layer.OrderAGG.Events;
 using Domain_Layer.OrderAGG.Services;
-using Domain_Layer.Shared;
+using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Value_Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +12,19 @@ using System.Threading.Tasks;
 
 namespace Domain_Layer.Orders
 {
-    public class Order
+    public class Order:AggregateRoot
     {
   
 
         public Order()
         {
            
-            oId = Guid.NewGuid();  
             Finally = false;
             Items = new List<OrderItem>();           
         }
 
-        public Guid oId { get;private set; }
         public int TottalItems { get;private set; }
+        public long UserId{ get; private set; }
         public bool Finally{ get; private set; }
         public DateTime FinallyDate{ get; private set; }
         public ICollection<OrderItem> Items{ get; private set; }
@@ -56,7 +57,7 @@ namespace Domain_Layer.Orders
         //    item.DecreaseCount();
         //}
 
-        public void AddOrderItem(Guid pid, int count,int price, IOrderDomainService service) 
+        public void AddOrderItem(long pid, int count,int price, IOrderDomainService service) 
         {
             if (service.ProductNotExsite(pid))
                 throw new Exception("product not found");
@@ -64,11 +65,11 @@ namespace Domain_Layer.Orders
             if (Items.Any(x => x.ProductId == pid))
                 throw new Exception("this order was created");
 
-            Items.Add(new OrderItem(this.oId, pid, count, Money.FromTooman(price)));
+            Items.Add(new OrderItem(Id , pid, count, Money.FromTooman(price)));
             TottalItems += count;
         }
 
-        public void RemoveOrderItem(Guid id)
+        public void RemoveOrderItem(long id)
         {
             var item = Items.FirstOrDefault(z=>z.ProductId  == id);
             if (item == null)
@@ -80,7 +81,8 @@ namespace Domain_Layer.Orders
         public void FinallyOrder() {
 
             Finally = true;
-            FinallyDate = DateTime.Now; 
+            FinallyDate = DateTime.Now;
+            AddDomainEvent(new OrderFinallized(Id, UserId));
         }
 
        

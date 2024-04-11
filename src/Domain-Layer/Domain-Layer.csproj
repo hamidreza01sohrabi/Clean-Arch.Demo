@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="ProductAGG\Events\" />
     <Folder Include="ProductAGG\Services\" />
     <Folder Include="UserAGG\Services\" />
   </ItemGroup>

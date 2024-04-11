@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain_Layer.Shared
+namespace Domain_Layer.Shared.Value_Objects
 {
     public class PhoneBook
     {
