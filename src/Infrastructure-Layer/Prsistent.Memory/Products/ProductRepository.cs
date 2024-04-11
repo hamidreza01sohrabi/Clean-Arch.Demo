@@ -37,9 +37,9 @@ namespace Infrastructure_Layer.Prsistent.Memory.Products
             return dbContext.products;
         }
 
-        public bool NotExist(Guid guid)
+        public bool Exist(Guid guid)
         {
-            return   dbContext.products.Any(item => item.pId == guid);
+            return  dbContext.products.Any(item => item.pId == guid);
         }
 
         public void SaveEveryThings()

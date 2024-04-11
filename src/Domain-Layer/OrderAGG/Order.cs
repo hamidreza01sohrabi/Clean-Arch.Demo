@@ -1,4 +1,5 @@
 ﻿using Domain_Layer.OrderAGG;
+using Domain_Layer.OrderAGG.Services;
 using Domain_Layer.Shared;
 using System;
 using System.Collections.Generic;
@@ -55,8 +56,11 @@ namespace Domain_Layer.Orders
         //    item.DecreaseCount();
         //}
 
-        public void AddOrderItem(Guid pid, int count,int price) 
+        public void AddOrderItem(Guid pid, int count,int price, IOrderDomainService service) 
         {
+            if (service.ProductNotExsite(pid))
+                throw new Exception("product not found");
+
             if (Items.Any(x => x.ProductId == pid))
                 throw new Exception("this order was created");
 

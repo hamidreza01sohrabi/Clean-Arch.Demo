@@ -36,6 +36,6 @@ namespace Domain_Layer.Products.Repository
 
 
         //گرفتن استعلام شی از بانک
-        bool NotExist(Guid guid);
+        bool Exist(Guid guid);
     }
 }
