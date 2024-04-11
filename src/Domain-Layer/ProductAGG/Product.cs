@@ -1,5 +1,6 @@
 ﻿using Domain_Layer.ProductAGG;
 using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Domain_Exceptios;
 using Domain_Layer.Shared.Value_Objects;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace Domain_Layer.Products
 
             var img=images.FirstOrDefault(i=>i.Id == id);
             if (img == null)
-                throw new Exception("image not found");
+                throw new DomainNotFoundData("product not found to add image");
 
             images.Remove(img); 
         }
@@ -54,15 +55,9 @@ namespace Domain_Layer.Products
         private void Guard(string tittle, int count)
         {
 
-            if (string.IsNullOrWhiteSpace(tittle))
-            {
-                throw new Exception("tittle is null");
-            }
-            if (count < 0)
-            {
-
-                throw new Exception("count is invalid");
-            }
+            DomainInvalidArgumentException.CheckInvalidStringArgs(tittle);
+           
+            DomainInvalidArgumentException.CheckInvalidIntegerArgs(count);
         }
         
     }

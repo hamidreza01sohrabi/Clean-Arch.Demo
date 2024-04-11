@@ -2,6 +2,7 @@
 using Domain_Layer.OrderAGG.Events;
 using Domain_Layer.OrderAGG.Services;
 using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Domain_Exceptios;
 using Domain_Layer.Shared.Value_Objects;
 using System;
 using System.Collections.Generic;
@@ -60,10 +61,10 @@ namespace Domain_Layer.Orders
         public void AddOrderItem(long pid, int count,int price, IOrderDomainService service) 
         {
             if (service.ProductNotExsite(pid))
-                throw new Exception("product not found");
+                throw new DomainNotFoundData("product not found to create orderItem");
 
             if (Items.Any(x => x.ProductId == pid))
-                throw new Exception("this order was created");
+                throw new DomainReviewArgumentException();
 
             Items.Add(new OrderItem(Id , pid, count, Money.FromTooman(price)));
             TottalItems += count;
@@ -73,7 +74,7 @@ namespace Domain_Layer.Orders
         {
             var item = Items.FirstOrDefault(z=>z.ProductId  == id);
             if (item == null)
-                throw new Exception("order item was not found");
+                throw new DomainNotFoundData("order item was not found");
 
             Items.Remove(item);
             TottalItems -= item.Count;    
