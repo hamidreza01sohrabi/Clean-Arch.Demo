@@ -1,4 +1,5 @@
 ﻿using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Domain_Exceptios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Domain_Layer.ProductAGG
     {
         public ProductImage(string imageName, long pid)
         {
+            Guard(imageName, pid);
             ImageName = imageName;
             pId = pid;
         }
@@ -20,14 +22,7 @@ namespace Domain_Layer.ProductAGG
 
         private void Guard(string imgName, long pid) {
 
-            if (string.IsNullOrEmpty(imgName))
-            {
-                throw new Exception("image name cant be null");
-            }
-            if (pid == null)
-            {
-                throw new Exception("productId is invalid");
-            }
+            DomainNullArgumentException.CheckNullArgs(imgName);
         }
     }
 }

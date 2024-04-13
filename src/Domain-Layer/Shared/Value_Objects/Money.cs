@@ -1,4 +1,5 @@
 ﻿using Domain_Layer.Shared.Base_Value_Object;
+using Domain_Layer.Shared.Domain_Exceptios;
 using System.Numerics;
 
 namespace Domain_Layer.Shared.Value_Objects
@@ -17,10 +18,10 @@ namespace Domain_Layer.Shared.Value_Objects
             return new Money(Tomn * 10);
         }
 
-        //public static Money FromRial(double Tomn)
-        //{
-        //    return new Money(Tomn);
-        //}
+        public static Money FromRial(double Tomn)
+        {
+            return new Money(Tomn);
+        }
 
         public static Money operator +(Money m1, Money m2)
         {
@@ -36,10 +37,7 @@ namespace Domain_Layer.Shared.Value_Objects
 
         private void Guard(double value)
         {
-            if (value <= 0)
-            {
-                throw new Exception("Price cant be negative Number or zero");
-            }
+            DomainInvalidArgumentException.CheckInvalidIntegerArgs(value);
         }
 
         protected override IEnumerable<object> GetAtomicValues()

@@ -22,6 +22,12 @@ namespace Domain_Layer.Shared.Domain_Exceptios
                 throw new DomainInvalidArgumentException($"{value} is in invalid state");
         }
 
+        public static void CheckInvalidIntegerArgs(double value)
+        {
+
+            if (value <= 0)
+                throw new DomainInvalidArgumentException();
+        }
         public static void CheckInvalidIntegerArgs(int value) {
 
             if (value <= 0)
