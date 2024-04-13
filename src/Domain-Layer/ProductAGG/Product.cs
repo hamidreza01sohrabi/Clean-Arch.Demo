@@ -21,16 +21,11 @@ namespace Domain_Layer.Products
             Count = count;
             images = new List<ProductImage>();
         }
-
         public string Tittle { get; private set; }
         public Money Price { get; private set; }
         public int Count { get; private set; }
         public int TottalImage { get; private set; }
         public ICollection<ProductImage> images { get; private set; }
-
-
-
-
         public void AddImage(string ImgName) {
            
             images.Add(new ProductImage(ImgName, Id));
@@ -40,11 +35,10 @@ namespace Domain_Layer.Products
 
             var img=images.FirstOrDefault(i=>i.Id == id);
             if (img == null)
-                throw new DomainNotFoundData("product not found to add image");
+                throw new DomainNotFoundDataException("product not found to add image");
 
             images.Remove(img); 
         }
-
         public void Edite(string tittle, Money price, int count)
         {
             Guard(tittle, count);

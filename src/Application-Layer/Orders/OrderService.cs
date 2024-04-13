@@ -1,4 +1,5 @@
-﻿using Application_Layer.Orders.DTOS;
+﻿using Application_Layer.Orders.DomainService;
+using Application_Layer.Orders.DTOS;
 using Domain_Layer.Orders;
 using Domain_Layer.Orders.Repository;
 using Domain_Layer.Shared.Value_Objects;
@@ -13,7 +14,13 @@ namespace Application_Layer.Orders
             repository= _repository;    
         }
 
-
+        //public void CreateNewOrder(AddOrderDTO command)
+        //{
+        //    var newOrder = new Order();
+        //    newOrder.AddOrderItem(command.ProductId, command.Count, Money.FromTooman(command.Price));
+        //    repository.Add(newOrder);
+        //    repository.SaveEveryThings();
+        //}
         public void CreateNewOrder(AddOrderDTO command)
         {
             var newOrder = new Order(command.ProductId, Money.FromTooman(command.Price), command.Count);

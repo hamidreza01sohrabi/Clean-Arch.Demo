@@ -61,7 +61,7 @@ namespace Domain_Layer.Orders
         public void AddOrderItem(long pid, int count,int price, IOrderDomainService service) 
         {
             if (service.ProductNotExsite(pid))
-                throw new DomainNotFoundData("product not found to create orderItem");
+                throw new DomainNotFoundDataException("product not found to create orderItem");
 
             if (Items.Any(x => x.ProductId == pid))
                 throw new DomainReviewArgumentException();
@@ -74,7 +74,7 @@ namespace Domain_Layer.Orders
         {
             var item = Items.FirstOrDefault(z=>z.ProductId  == id);
             if (item == null)
-                throw new DomainNotFoundData("order item was not found");
+                throw new DomainNotFoundDataException("order item was not found");
 
             Items.Remove(item);
             TottalItems -= item.Count;    

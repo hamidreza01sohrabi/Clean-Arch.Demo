@@ -15,8 +15,8 @@ namespace Domain_Layer.ProductAGG
             pId = pid;
         }
 
-        public string ImageName{ get; set; }
-        public long pId { get; set; }
+        public string ImageName{ get;private set; }
+        public long pId { get;private set; }
 
         private void Guard(string imgName, long pid) {
 
