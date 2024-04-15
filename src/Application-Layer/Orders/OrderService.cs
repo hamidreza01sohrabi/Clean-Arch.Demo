@@ -1,5 +1,6 @@
 ﻿using Application_Layer.Orders.DomainService;
 using Application_Layer.Orders.DTOS;
+using Contract_Layer;
 using Domain_Layer.OrderAGG.Services;
 using Domain_Layer.Orders;
 using Domain_Layer.Orders.Repository;
@@ -10,11 +11,12 @@ namespace Application_Layer.Orders
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository repository;
+        private readonly ISMS SMS;
       ///  private readonly IOrderDomainService service;
-        public OrderService(IOrderRepository _repository, IOrderDomainService _service)
+        public OrderService(IOrderRepository _repository, ISMS _SMS )
         {
             repository= _repository;
-           /// service = _service;
+            SMS= _SMS;
         }
 
         //public void CreateNewOrder(AddOrderDTO command)
@@ -26,8 +28,8 @@ namespace Application_Layer.Orders
         //}
         public void CreateNewOrder(AddOrderDTO command)
         {
-            var newOrder = new Order(command.UserId, command.ProductId);
-         ////////   newOrder.AddOrderItem(command.ProductId, command.Count, command.Price, service);
+            var newOrder = new Order(command.UserId);
+            //// newOrder.AddOrderItem(command.ProductId, command.Count, command.Price, service);
             repository.Add(newOrder);
             repository.SaveEveryThings();
         }
@@ -38,13 +40,17 @@ namespace Application_Layer.Orders
             order.FinallyOrder();
             repository.Update(order);
             repository.SaveEveryThings();
-
+            SMS.Send(new MessageInfo()
+            {
+                messageText = "",
+                Tells = ""
+            });
         }
 
         public OrderDTO GetOrder(long id)
         {
             Order o = repository.GetOrderById(id);
-            return new OrderDTO(o.Id);
+            return new OrderDTO(o.Id, o.UserId);
         }
 
     

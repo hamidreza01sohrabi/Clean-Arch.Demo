@@ -1,4 +1,5 @@
 ﻿using Domain_Layer.Shared.Base_Value_Object;
+using Domain_Layer.Shared.Domain_Exceptios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +24,9 @@ namespace Domain_Layer.Shared.Value_Objects
 
         private void Guard(string tell)
         {
+            DomainNullArgumentException.CheckNullArgs(tell);
 
-            if (string.IsNullOrEmpty(tell) || string.IsNullOrWhiteSpace(tell))
-            {
-                throw new Exception("Value is not found");
-            }
-            if (tell.Trim().Length == 11)
-            {
-                throw new Exception("caracter less");
-            }
+            DomainInvalidArgumentException.CheckInvalidStringArgs(tell);
         }
         //public static PhoneNumber addNumber(string tell)
         //{

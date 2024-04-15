@@ -8,13 +8,11 @@ namespace Application_Layer.Orders.DTOS
 {
     public class AddOrderDTO
     {
-        public AddOrderDTO(long userid, long productId)
+        public AddOrderDTO(long userid)
         {
             UserId = userid;
-            ProductId = productId;
         }
 
         public long UserId { get; set; }
-        public long ProductId { get; set; }
     }
 }

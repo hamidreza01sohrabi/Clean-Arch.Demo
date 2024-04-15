@@ -17,7 +17,7 @@ namespace Domain_Layer.Orders
     {
   
 
-        public Order(long userid, long productId)
+        public Order(long userid)
         {
             UserId= userid;
             Finally = false;
