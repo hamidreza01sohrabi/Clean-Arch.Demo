@@ -10,7 +10,7 @@ namespace Application_Layer.Products.DTOs
     {
         public ProductDTO() { }
 
-        public Guid pId { get;  set; }
+        public long productId { get;  set; }
         public string Tittle { get;  set; }
         public double Price { get;  set; }
         public int Count { get;  set; }

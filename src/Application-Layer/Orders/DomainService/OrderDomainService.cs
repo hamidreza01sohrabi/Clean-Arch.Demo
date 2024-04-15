@@ -17,11 +17,11 @@ namespace Application_Layer.Orders.DomainService
             repository = _repository;
         }
 
-        public bool ProductNotExsite(Guid ProductId)
+     
+        public bool ProductNotExsite(long ProductId)
         {
             var P = repository.Exist(ProductId);
             return !P;
         }
-
     }
 }

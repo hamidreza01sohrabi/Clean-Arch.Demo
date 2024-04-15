@@ -2,7 +2,7 @@
 {
     public class FinallyOrderDTO
     {
-        public Guid oId { get; set; }
+        public long oId { get; set; }
        
     }
 }

@@ -14,7 +14,7 @@ namespace Application_Layer.Products
         void CreateNewProduct(AddProductDTO Command);
         void EditProduct(EditeProductDTO editeDTO);
         void DeleteProduct(DeleteProductDTO deleteDTO);
-        ProductDTO GetProductById(Guid id);
+        ProductDTO GetProductById(long id);
         List<ProductDTO> GetAllProduct();
     }
 }

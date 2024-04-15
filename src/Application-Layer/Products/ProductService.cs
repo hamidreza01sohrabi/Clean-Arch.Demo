@@ -32,8 +32,6 @@ namespace Application_Layer.Products
             {
                 repository.Delete(oldP);
                 repository.SaveEveryThings();
-
-                
             }
 
         }
@@ -60,7 +58,7 @@ namespace Application_Layer.Products
 
             return repository.GetProducts().Select(p => new ProductDTO()
             {
-                pId = p.pId,
+                productId = p.Id,
                 Tittle = p.Tittle,
                 Price = p.Price.RialValue,
                 Count = p.Count
@@ -68,7 +66,7 @@ namespace Application_Layer.Products
             }).ToList();
         }
 
-        public ProductDTO GetProductById(Guid id)
+        public ProductDTO GetProductById(long id)
         {
 
             //map from domain model type to DTOs
@@ -76,7 +74,7 @@ namespace Application_Layer.Products
             var p = repository.GetProductById(id);
             return new ProductDTO()
             {
-                pId = p.pId,
+                productId = p.Id,
                 Tittle = p.Tittle,
                 Price = p.Price.RialValue,
                 Count = p.Count

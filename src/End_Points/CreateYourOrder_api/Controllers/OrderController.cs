@@ -40,7 +40,7 @@ namespace CreateYourOrder_api.Controllers
 
         [Route("/GettingOneO")]
         [HttpGet]
-        public OrderDTO GettingOneOrder(Guid guid)
+        public OrderDTO GettingOneOrder(long guid)
         {
 
             return orderService.GetOrder(guid);

@@ -17,7 +17,7 @@ namespace Domain_Layer.Orders
     {
   
 
-        public Order(long userid)
+        public Order(long userid, long productId)
         {
             UserId= userid;
             Finally = false;
@@ -32,7 +32,7 @@ namespace Domain_Layer.Orders
 
 
 
-        public void AddOrderItem(long pid, int count, int price, IOrderDomainService service)
+        public void AddOrderItem(long pid, int count, double price, IOrderDomainService service)
         {
             
             if (service.ProductNotExsite(pid))

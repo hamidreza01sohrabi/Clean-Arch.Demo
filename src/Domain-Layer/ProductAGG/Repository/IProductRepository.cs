@@ -24,7 +24,7 @@ namespace Domain_Layer.Products.Repository
 
 
         //برای گرفتن اشیا ثبت شده
-        Product GetProductById(Guid id);
+        Product GetProductById(long id);
         List<Product> GetProducts();
 
 
@@ -36,6 +36,6 @@ namespace Domain_Layer.Products.Repository
 
 
         //گرفتن استعلام شی از بانک
-        bool Exist(Guid guid);
+        bool Exist(long guid);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Application_Layer.Users.DTOs;
 using Domain_Layer.Shared;
+using Domain_Layer.Shared.Value_Objects;
 using Domain_Layer.Users;
 using Domain_Layer.Users.Repository;
 
@@ -41,7 +42,7 @@ namespace Application_Layer.Users
             return repository.GetUsers().Select(U => new UserDTO() { UserName = U.UserName, Email = U.Email, MobileNumber = U.PhoneBook.Moblie.Tell, FaxNumber = U.PhoneBook.Fax.Tell }).ToList();
         }
 
-        public UserDTO GetUserById(Guid guid)
+        public UserDTO GetUserById(long guid)
         {
             var x = repository.GetUserById(guid);
             return new UserDTO() { UserName = x.UserName, Email = x.Email, MobileNumber = x.PhoneBook.Moblie.Tell, FaxNumber = x.PhoneBook.Fax.Tell };

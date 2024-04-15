@@ -2,7 +2,7 @@
 {
     public class EditeProductDTO 
     {
-        public EditeProductDTO(Guid id, string tittle, double price, int count)
+        public EditeProductDTO(long id, string tittle, double price, int count)
         {
             this.id = id;
             Tittle = tittle;
@@ -10,7 +10,7 @@
             Count = count;
         }
 
-        public Guid id { get; set; }
+        public long id { get; set; }
         public string Tittle { get; set; }
         public double Price { get; set; }
         public int Count { get; set; }

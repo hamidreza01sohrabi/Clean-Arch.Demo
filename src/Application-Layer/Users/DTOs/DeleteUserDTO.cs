@@ -11,7 +11,7 @@
         //    PhoneNumber = phoneNumber;
         //}
 
-        public Guid uId { get; set; }
+        public long uId { get; set; }
 
     }
 }

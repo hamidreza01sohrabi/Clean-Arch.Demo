@@ -1,5 +1,6 @@
 ﻿using Application_Layer.Orders.DomainService;
 using Application_Layer.Orders.DTOS;
+using Domain_Layer.OrderAGG.Services;
 using Domain_Layer.Orders;
 using Domain_Layer.Orders.Repository;
 using Domain_Layer.Shared.Value_Objects;
@@ -9,9 +10,11 @@ namespace Application_Layer.Orders
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository repository;
-        public OrderService(IOrderRepository _repository)
+      ///  private readonly IOrderDomainService service;
+        public OrderService(IOrderRepository _repository, IOrderDomainService _service)
         {
-            repository= _repository;    
+            repository= _repository;
+           /// service = _service;
         }
 
         //public void CreateNewOrder(AddOrderDTO command)
@@ -23,7 +26,8 @@ namespace Application_Layer.Orders
         //}
         public void CreateNewOrder(AddOrderDTO command)
         {
-            var newOrder = new Order(command.ProductId, Money.FromTooman(command.Price), command.Count);
+            var newOrder = new Order(command.UserId, command.ProductId);
+         ////////   newOrder.AddOrderItem(command.ProductId, command.Count, command.Price, service);
             repository.Add(newOrder);
             repository.SaveEveryThings();
         }
@@ -37,15 +41,20 @@ namespace Application_Layer.Orders
 
         }
 
-        public OrderDTO GetOrder(Guid id)
+        public OrderDTO GetOrder(long id)
         {
-           var or= repository.GetOrderById(id);
-            return new OrderDTO(or.oId, or.ProductId, or.Price.RialValue, or.Count, or.Finally, or.FinallyDate);    
+            Order o = repository.GetOrderById(id);
+            return new OrderDTO(o.Id);
         }
+
+    
 
         public List<OrderDTO> GetOrders()
         {
-            return repository.GetOrders().Select(or => new OrderDTO(or.oId, or.ProductId, or.Price.RialValue, or.Count, or.Finally, or.FinallyDate)).ToList();
+            return repository.GetOrders().Select(or => new OrderDTO() {
+
+                oId = or.Id
+            }).ToList();
         }
     }
 }

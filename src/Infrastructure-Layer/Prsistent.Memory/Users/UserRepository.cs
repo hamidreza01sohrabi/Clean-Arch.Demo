@@ -1,4 +1,5 @@
-﻿using Domain_Layer.Products;
+﻿using Domain_Layer;
+using Domain_Layer.Products;
 using Domain_Layer.Users;
 using Domain_Layer.Users.Repository;
 using System;
@@ -21,9 +22,9 @@ namespace Infrastructure_Layer.Prsistent.Memory.Users
            dbContext.users.Add(user);   
         }
 
-        public User GetUserById(Guid id)
+        public User GetUserById(long id)
         {
-            return dbContext.users.FirstOrDefault(i => i.uId == id);
+            return dbContext.users.FirstOrDefault(i => i.Id == id);
         }
 
         public List<User> GetUsers()
@@ -31,9 +32,9 @@ namespace Infrastructure_Layer.Prsistent.Memory.Users
             return dbContext.users.ToList();
         }
 
-        public bool NotExist(Guid guid)
+        public bool NotExist(long guid)
         {
-            return dbContext.users.Any(u=>u.uId == guid);
+            return dbContext.users.Any(u=>u.Id == guid);
         }
 
         public void SaveEveryThings()
@@ -43,9 +44,10 @@ namespace Infrastructure_Layer.Prsistent.Memory.Users
 
         public void Update(User user)
         {
-            var old = GetUserById(user.uId);
+            var old = GetUserById(user.Id);
             dbContext.users.Remove(old);
             dbContext.users.Add(user);
         }
+
     }
 }

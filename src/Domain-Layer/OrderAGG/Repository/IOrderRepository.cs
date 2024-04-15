@@ -23,7 +23,7 @@ namespace Domain_Layer.Orders.Repository
         
 
         //برای گرفتن اشیا ثبت شده
-        Order GetOrderById(Guid id);
+        Order GetOrderById(long id);
         List<Order> GetOrders();
 
 
@@ -35,6 +35,6 @@ namespace Domain_Layer.Orders.Repository
 
 
         //گرفتن استعلام شی از بانک
-        bool NotExist(Guid guid);
+        bool NotExist(long guid);
     }
 }

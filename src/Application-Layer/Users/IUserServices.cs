@@ -15,7 +15,7 @@ namespace Application_Layer.Users
         void CreateNewUser(AddUserDTO command);
         void EditUser(EditeUserDTO command);
         void DeleteUser(DeleteUserDTO guid);
-        UserDTO GetUserById(Guid guid);
+        UserDTO GetUserById(long guid);
         List<UserDTO> GetAllUser();
     }
 }

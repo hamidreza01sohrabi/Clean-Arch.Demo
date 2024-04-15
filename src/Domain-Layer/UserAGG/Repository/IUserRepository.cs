@@ -19,7 +19,7 @@ namespace Domain_Layer.Users.Repository
         void Update(User user);
 
         //برای گرفتن اشیا ثبت شده
-        User GetUserById(Guid id);
+        User GetUserById(long id);
         List<User> GetUsers();
 
 
@@ -28,7 +28,7 @@ namespace Domain_Layer.Users.Repository
 
 
         //گرفتن استعلام شی از بانک
-        bool NotExist(Guid guid);
+        bool NotExist(long guid);
         
     }
 }

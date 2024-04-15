@@ -2,7 +2,7 @@
 {
     public class EditeUserDTO
     {
-        public EditeUserDTO(Guid uId, string userName, string email, string mobileNumber, string faxNumber)
+        public EditeUserDTO(long uId, string userName, string email, string mobileNumber, string faxNumber)
         {
             this.uId = uId;
             UserName = userName;
@@ -12,7 +12,7 @@
         }
 
 
-        public Guid uId { get; set; }
+        public long uId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string MobileNumber { get; set; }

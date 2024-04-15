@@ -2,12 +2,12 @@
 {
     public class DeleteProductDTO
     {
-        public DeleteProductDTO(Guid id)
+        public DeleteProductDTO(long id)
         {
             this.id = id;
         }
 
-        public Guid id { get; set; }
+        public long id { get; set; }
        
     }
 

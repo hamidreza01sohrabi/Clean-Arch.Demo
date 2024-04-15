@@ -27,9 +27,9 @@ namespace Infrastructure_Layer.Prsistent.Memory.Products
             dbContext.products.Remove(p);
         }
 
-        public Product GetProductById(Guid id)
+        public Product GetProductById(long id)
         {
-            return dbContext.products.FirstOrDefault<Product>(i => i.pId == id);
+            return dbContext.products.FirstOrDefault<Product>(i => i.Id == id);
         }
 
         public List<Product> GetProducts()
@@ -37,9 +37,9 @@ namespace Infrastructure_Layer.Prsistent.Memory.Products
             return dbContext.products;
         }
 
-        public bool Exist(Guid guid)
+        public bool Exist(long guid)
         {
-            return  dbContext.products.Any(item => item.pId == guid);
+            return  dbContext.products.Any(item => item.Id == guid);
         }
 
         public void SaveEveryThings()
@@ -49,7 +49,7 @@ namespace Infrastructure_Layer.Prsistent.Memory.Products
 
         public void Update(Product product)
         {
-            var old=GetProductById(product.pId);
+            var old=GetProductById(product.Id);
             dbContext.products.Remove(old);
             dbContext.products.Add(product);
 

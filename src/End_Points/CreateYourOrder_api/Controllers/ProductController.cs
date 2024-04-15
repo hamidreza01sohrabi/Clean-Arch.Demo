@@ -44,7 +44,7 @@ namespace CreateYourOrder_api.Controllers
 
         [Route("/GettingOneP")]
         [HttpGet]
-        public ProductDTO GetOneProduct(Guid id)
+        public ProductDTO GetOneProduct(long id)
         {
             return productService.GetProductById(id);
         }

@@ -11,7 +11,7 @@ namespace Application_Layer.Orders
     {
         void CreateNewOrder(AddOrderDTO command);
         void FinallyOrder(FinallyOrderDTO command);
-        OrderDTO GetOrder(Guid id);  
+        OrderDTO GetOrder(long id);  
         List<OrderDTO> GetOrders();  
     }
 }

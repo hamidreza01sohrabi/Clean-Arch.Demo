@@ -45,7 +45,7 @@ namespace CreateYourOrder_api.Controllers
 
         [Route("/GetOneUser")]
         [HttpGet]
-        public UserDTO GettingOneUser(Guid guid) { 
+        public UserDTO GettingOneUser(long guid) { 
             
             return  userServices.GetUserById(guid);
         }
