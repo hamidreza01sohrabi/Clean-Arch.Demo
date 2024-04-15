@@ -17,9 +17,9 @@ namespace Domain_Layer.Orders
     {
   
 
-        public Order()
+        public Order(long userid)
         {
-           
+            UserId= userid;
             Finally = false;
             Items = new List<OrderItem>();           
         }
@@ -29,6 +29,51 @@ namespace Domain_Layer.Orders
         public bool Finally{ get; private set; }
         public DateTime FinallyDate{ get; private set; }
         public ICollection<OrderItem> Items{ get; private set; }
+
+
+
+        public void AddOrderItem(long pid, int count, int price, IOrderDomainService service)
+        {
+            
+            if (service.ProductNotExsite(pid))
+                throw new DomainNotFoundDataException("product not found to create orderItem");
+
+            if (Items.Any(x => x.ProductId == pid))
+                throw new DomainRepetitiveOperationException();
+
+            Items.Add(new OrderItem(Id, pid, count, Money.FromTooman(price)));
+            TottalItems += count;
+        }
+
+        public void RemoveOrderItem(long id)
+        {
+            var item = Items.FirstOrDefault(z => z.ProductId == id);
+            if (item == null)
+                throw new DomainNotFoundDataException("order item was not found");
+
+            Items.Remove(item);
+            TottalItems -= item.Count;
+        }
+        public void FinallyOrder()
+        {
+
+            Finally = true;
+            FinallyDate = DateTime.Now;
+            AddDomainEvent(new OrderFinallized(Id, UserId));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //public double GetTottalPriceOfItem(long itemId) {
@@ -45,7 +90,7 @@ namespace Domain_Layer.Orders
         //    if (item != null)
         //        throw new Exception("item not found");
 
-           
+
         //    item.IncreaseCount();
         //}
         //public void MinusCountOfItem(long itemId)
@@ -58,36 +103,7 @@ namespace Domain_Layer.Orders
         //    item.DecreaseCount();
         //}
 
-        public void AddOrderItem(long pid, int count,int price, IOrderDomainService service) 
-        {
-            if (service.ProductNotExsite(pid))
-                throw new DomainNotFoundDataException("product not found to create orderItem");
 
-            if (Items.Any(x => x.ProductId == pid))
-                throw new DomainReviewArgumentException();
 
-            Items.Add(new OrderItem(Id , pid, count, Money.FromTooman(price)));
-            TottalItems += count;
-        }
-
-        public void RemoveOrderItem(long id)
-        {
-            var item = Items.FirstOrDefault(z=>z.ProductId  == id);
-            if (item == null)
-                throw new DomainNotFoundDataException("order item was not found");
-
-            Items.Remove(item);
-            TottalItems -= item.Count;    
-        }
-        public void FinallyOrder() {
-
-            Finally = true;
-            FinallyDate = DateTime.Now;
-            AddDomainEvent(new OrderFinallized(Id, UserId));
-        }
-
-       
-        
-          
     }
 }

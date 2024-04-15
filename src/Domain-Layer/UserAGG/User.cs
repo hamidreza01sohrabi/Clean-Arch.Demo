@@ -1,4 +1,5 @@
 ﻿using Domain_Layer.Shared.Base_Classes;
+using Domain_Layer.Shared.Domain_Exceptios;
 using Domain_Layer.Shared.Value_Objects;
 using Domain_Layer.UserAGG.Events;
 using System;
@@ -26,8 +27,8 @@ namespace Domain_Layer
         public DateTime DeleteDate{ get;private set; }
 
         public static User Register(string e) {
-           
-            var U = new User("", e, null);
+
+            var U = new User("No SignUP Yet",e,null);
 
             U.AddDomainEvent(new UserRegistered(U.Id, e));
 
@@ -40,7 +41,6 @@ namespace Domain_Layer
             DeleteDate = DateTime.Now;
         }
 
-
         public void Edite(string userName, string email, PhoneBook phoneBook) {
             UserName = userName;
             Email = email;
@@ -48,10 +48,9 @@ namespace Domain_Layer
         }
 
         private void Guard(string userName, string email) {
-
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(email)) {
-                throw new Exception("arguments are invalid");
-            }
+           
+            DomainNullArgumentException.CheckNullArgs(userName);
+            DomainNullArgumentException.CheckNullArgs(email);
         }
     }
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Domain_Layer.Shared.Domain_Exceptios
 {
-    public class DomainReviewArgumentException:BaseException
+    public class DomainRepetitiveOperationException : BaseException
     {
-        public DomainReviewArgumentException() : base("Repetitive Operation")
+        public DomainRepetitiveOperationException() : base("Repetitive Operation")
         {
             
         }
-        public DomainReviewArgumentException(string message):base(message) 
+        public DomainRepetitiveOperationException(string message):base(message) 
         {
             
         }
