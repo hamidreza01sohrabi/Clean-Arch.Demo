@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace ApplicationLayer.Test.UserTest
 {
@@ -41,7 +42,7 @@ namespace ApplicationLayer.Test.UserTest
         public void Delete_old_user_service()
         {
             //Arrange
-            userRepository.GetUserById(1).Returns(new User("usernamesh","Emailesh",new PhoneBook(new PhoneNumber("00000000000"), new PhoneNumber("00000000555")))); 
+            userRepository.GetUserById(Arg.Any<long>()).Returns(new User("usernamesh","Emailesh",new PhoneBook(new PhoneNumber("00000000000"), new PhoneNumber("00000000555")))); 
             var UserToDelete = new DeleteUserDTO() { uId = 1};
             //act
             userServices.DeleteUser(UserToDelete);

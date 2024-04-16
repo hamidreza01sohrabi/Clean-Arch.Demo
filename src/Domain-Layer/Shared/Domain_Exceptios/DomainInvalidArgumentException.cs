@@ -18,13 +18,12 @@ namespace Domain_Layer.Shared.Domain_Exceptios
             
         }
         public static void CheckInvalidStringArgs(string value) {
-            if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Trim().Length != 11)
-                throw new DomainInvalidArgumentException($"{value} is in invalid state");
+            if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                throw new DomainInvalidArgumentException();
         }
 
         public static void CheckInvalidIntegerArgs(double value)
         {
-
             if (value <= 0)
                 throw new DomainInvalidArgumentException();
         }
